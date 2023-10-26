@@ -24,8 +24,6 @@ For example: the secret is 1 2 3 4, then there are the following outputs based o
 |1 2|Wrong Input, input again  |Wrong Input, input again
 
 ## Practice Requirement
-
-1. Draw the whole task diagram firstly.
-2. Design and write tests for a task.
-3. Implement the above task use TDD approach.
-4. Repeat step 2&3 until all tasks are implemented.
+1. Design and write tests for a task.
+2. Implement the above task use TDD approach.
+3. Repeat step 1&2 until all tasks are implemented.
