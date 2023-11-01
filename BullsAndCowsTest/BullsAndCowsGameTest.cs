@@ -53,6 +53,7 @@ namespace BullsAndCowsTest
 
         [Theory]
         [InlineData("1562")]
+        [InlineData("5263")]
         public void Should_return_1A1B_when_guess_given_position_and_digit_partial_right(string guessNumber)
         {
             string secret = "1234";
@@ -61,6 +62,7 @@ namespace BullsAndCowsTest
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
             //when
             string result = game.Guess(guessNumber);
+
             //then
             Assert.Equal("1A1B", result);
         }
