@@ -18,14 +18,32 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_4A0B_when_guess_given_guess_number_and_secret_are_same()
         {
+            //given
             string guessNumber = "1234";
             string secret = "1234";
             Mock<SecretGenerator> mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
 
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            //when
             string result = game.Guess(guessNumber);
+            //then
             Assert.Equal("4A0B", result);
+        }
+
+        [Fact]
+        public void Should_return_2A0B_when_guess_given_position_and_digit_partial_right()
+        {
+            //given
+            string guessNumber = "1234";
+            string secret = "1256";
+            Mock<SecretGenerator> mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            //when
+            string result = game.Guess(guessNumber);
+            //then
+            Assert.Equal("2A0B", result);
         }
     }
 }
