@@ -9,6 +9,7 @@ namespace BullsAndCowsRunner
         {
             SecretGenerator secretGenerator = new SecretGenerator();
             BullsAndCowsGame game = new BullsAndCowsGame(secretGenerator);
+            Console.WriteLine("Game Start: type your guess for this secret 4 digit number");
             while (game.CanContinue)
             {
                 var input = Console.ReadLine();
