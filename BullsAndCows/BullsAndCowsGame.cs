@@ -17,6 +17,11 @@ namespace BullsAndCows
 
         public bool CanContinue => true;
 
+        public bool IsGuessValid(string guess)
+        {
+            return true;
+        }
+
         public string Guess(string guess)
         {
             char[] guessArr = guess.ToCharArray();

@@ -149,5 +149,60 @@ namespace BullsAndCowsTest
             //Then
             Assert.Equal(expectedResult, result);
         }
+
+        //-------------------------------------------Test isGuessValid Method------------------------------------------
+        [Fact]
+        public void Should_return_true_when_isGuessValid_given_valid_numerical_nonRepeated_input()
+        {
+            //When
+            bool expectedResult = true;
+            string guessNumber = "1234";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            //Given
+            var result = game.IsGuessValid(guessNumber);
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_return_false_when_isGuessValid_given_nonNumerical_nonRepeated_input()
+        {
+            //When
+            bool expectedResult = false;
+            string guessNumber = "abcd";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            //Given
+            var result = game.IsGuessValid(guessNumber);
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_return_false_when_isGuessValid_given_numerical_repeated_input()
+        {
+            //When
+            bool expectedResult = false;
+            string guessNumber = "1123";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            //Given
+            var result = game.IsGuessValid(guessNumber);
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
     }
 }
