@@ -44,5 +44,6 @@ namespace BullsAndCowsTest
             var result = game.Guess(guessNumber);
             Assert.Equal("2A0B", result);
         }
+
     }
 }
