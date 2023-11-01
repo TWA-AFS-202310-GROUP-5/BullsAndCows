@@ -23,15 +23,20 @@ namespace BullsAndCows
             else
             {
                 int countSameValueAndPosition = 0;
+                int countSameValueNotPosition = 0;
                 for (var i = 0; i < secret.Length; i++)
                 {
-                    if (guess[i] == secret[i])
+                    if (secret.IndexOf(guess[i]) == i)
                     {
                         countSameValueAndPosition++;
                     }
+                    else if (secret.IndexOf(guess[i]) >= 0)
+                    {
+                        countSameValueNotPosition++;
+                    }
                 }
 
-                return countSameValueAndPosition + "A0B";
+                return countSameValueAndPosition + "A" + countSameValueNotPosition + "B";
             }
         }
     }
