@@ -22,7 +22,14 @@ namespace BullsAndCows
                 return "4A0B";
             }
 
-            return "";
+            for (int i = 0; i < guess.Length; i++)
+            {
+                if (secret.IndexOf(guess[i]) != -1)
+                {
+                    bulls++;
+                }
+            }
+            return $"{bulls}A0B";
         }
     }
 }
