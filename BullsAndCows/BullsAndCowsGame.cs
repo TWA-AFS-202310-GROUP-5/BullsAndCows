@@ -54,7 +54,13 @@ namespace BullsAndCows
         private void UpdateCanContinue(string guessResult)
         {
             counter++;
-            if (guessResult == "4A0B" || counter >= 6)
+
+            if (guessResult == "4A0B")
+            {
+                IsWinner = true;
+                CanContinue = false;
+            }
+            else if (counter >= 6)
             {
                 CanContinue = false;
             }
