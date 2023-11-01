@@ -9,14 +9,17 @@ namespace BullsAndCows
     {
         private readonly SecretGenerator secretGenerator;
         private readonly string secret;
+        private int counter;
 
         public BullsAndCowsGame(SecretGenerator secretGenerator)
         {
             this.secretGenerator = secretGenerator;
             this.secret = secretGenerator.GenerateSecret();
+            this.counter = 0;
+            this.CanContinue = true;
         }
 
-        public bool CanContinue => true;
+        public bool CanContinue { get; set; }
 
         public bool IsGuessValid(string guess)
         {
@@ -41,6 +44,23 @@ namespace BullsAndCows
                 return "Wrong Input, input again";
             }
 
+            string guessResult = GenerateGuessResult(guess);
+            UpdateCanContinue(guessResult);
+
+            return guessResult;
+        }
+
+        private void UpdateCanContinue(string guessResult)
+        {
+            counter++;
+            if (guessResult == "4A0B" || counter >= 6)
+            {
+                CanContinue = false;
+            }
+        }
+
+        private string GenerateGuessResult(string guess)
+        {
             char[] guessArr = guess.ToCharArray();
 
             (int numOfA, int numOfB) = CountMatchedAndCorrectDigits(guessArr);

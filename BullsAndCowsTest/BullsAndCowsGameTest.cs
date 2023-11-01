@@ -243,7 +243,7 @@ namespace BullsAndCowsTest
         }
 
         [Fact]
-        public void Should_return_true_when_CanContinue_given_after_fifth_try()
+        public void Should_be_true_when_CanContinue_given_after_fifth_try()
         {
             //When
             bool expectedResult = true;
@@ -265,7 +265,7 @@ namespace BullsAndCowsTest
         }
 
         [Fact]
-        public void Should_return_false_when_CanContinue_given_after_sixth_try()
+        public void Should_be_false_when_CanContinue_given_after_sixth_try()
         {
             //When
             bool expectedResult = false;
@@ -287,7 +287,7 @@ namespace BullsAndCowsTest
         }
 
         [Fact]
-        public void Should_return_false_when_CanContinue_given_guess_successfully()
+        public void Should_be_false_when_CanContinue_given_guess_successfully()
         {
             //When
             bool expectedResult = false;
