@@ -22,7 +22,16 @@ namespace BullsAndCows
             }
             else
             {
-                return "";
+                int countSameValueAndPosition = 0;
+                for (var i = 0; i < secret.Length; i++)
+                {
+                    if (guess[i] == secret[i])
+                    {
+                        countSameValueAndPosition++;
+                    }
+                }
+
+                return countSameValueAndPosition + "A0B";
             }
         }
     }
