@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -19,6 +20,17 @@ namespace BullsAndCows
 
         public bool IsGuessValid(string guess)
         {
+            List<char> existChar = new List<char>();
+            foreach (char c in guess)
+            {
+                if (c < '0' || c > '9' || existChar.Contains(c))
+                {
+                    return false;
+                }
+
+                existChar.Add(c);
+            }
+
             return true;
         }
 
