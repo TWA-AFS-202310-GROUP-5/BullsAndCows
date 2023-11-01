@@ -53,7 +53,7 @@ namespace BullsAndCows
             char[] secretArr = secret.ToCharArray();
             int fullMathedDigitNum = CountFullMatchGuessDigits(guessArr, secretArr);
 
-            int correctNotMatchedDigitNum = CountCorrectNotMatchedGuessDigits(guessArr, secretArr) - fullMathedDigitNum;
+            int correctNotMatchedDigitNum = CountCorrectGuessDigits(guessArr, secretArr) - fullMathedDigitNum;
 
             return (fullMathedDigitNum, correctNotMatchedDigitNum);
         }
@@ -72,7 +72,7 @@ namespace BullsAndCows
             return count;
         }
 
-        private int CountCorrectNotMatchedGuessDigits(char[] guessArr, char[] secretArr)
+        private int CountCorrectGuessDigits(char[] guessArr, char[] secretArr)
         {
             int count = 0;
             for (int i = 0; i < guessArr.Length; i++)

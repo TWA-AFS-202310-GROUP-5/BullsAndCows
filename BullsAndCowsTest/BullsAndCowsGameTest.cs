@@ -223,5 +223,86 @@ namespace BullsAndCowsTest
             //Then
             Assert.Equal(expectedResult, result);
         }
+
+        //-------------------------------------------Test canContinue Method------------------------------------------
+        [Fact]
+        public void Should_be_true_when_CanContinue_given_first_try()
+        {
+            //When
+            bool expectedResult = true;
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            //Given
+            var result = game.CanContinue;
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_return_true_when_CanContinue_given_after_fifth_try()
+        {
+            //When
+            bool expectedResult = true;
+            string[] guessNumbers = { "2345", "3456", "4567", "5678", "6789" };
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            foreach (string guess in guessNumbers)
+            {
+                game.Guess(guess);
+            }
+
+            //Given
+            var result = game.CanContinue;
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_return_false_when_CanContinue_given_after_sixth_try()
+        {
+            //When
+            bool expectedResult = false;
+            string[] guessNumbers = { "2345", "3456", "4567", "5678", "6789", "7890" };
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            foreach (string guess in guessNumbers)
+            {
+                game.Guess(guess);
+            }
+
+            //Given
+            var result = game.CanContinue;
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_return_false_when_CanContinue_given_guess_successfully()
+        {
+            //When
+            bool expectedResult = false;
+            string guessNumber = "1234";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            game.Guess(guessNumber);
+
+            //Given
+            var result = game.CanContinue;
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
     }
 }
