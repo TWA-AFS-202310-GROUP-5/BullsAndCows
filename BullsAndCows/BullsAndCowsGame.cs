@@ -27,6 +27,20 @@ namespace BullsAndCows
                 }
             }
 
+            for (int j = 0; j < guess.Length; j++)
+            {
+                for (int k = 0; k < guess.Length; k++)
+                {
+                    if (guess[k] == secret[j])
+                    {
+                        y++;
+                        break;
+                    }
+                }
+            }
+
+            y -= x;
+
             return $"{x}A{y}B";
         }
     }
