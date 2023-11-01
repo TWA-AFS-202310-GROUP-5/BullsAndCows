@@ -18,6 +18,11 @@ namespace BullsAndCowsRunner
                 Console.WriteLine(output);
             }
 
+            if (game.IsWinner)
+            {
+                Console.WriteLine("You Win!");
+            }
+
             Console.WriteLine("Game Over");
         }
     }
