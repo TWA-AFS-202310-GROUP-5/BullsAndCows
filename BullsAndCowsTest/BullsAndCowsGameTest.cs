@@ -1,5 +1,6 @@
 using BullsAndCows;
 using Moq;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace BullsAndCowsTest
@@ -138,6 +139,24 @@ namespace BullsAndCowsTest
             //When
             string expectedResult = "2A2B";
             string guessNumber = "1243";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            //Given
+            var result = game.Guess(guessNumber);
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_return_wrong_input_when_Guess_given_invalid_input()
+        {
+            //When
+            string expectedResult = "Wrong Input, input again";
+            string guessNumber = "abcd";
             string secret = "1234";
             var mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
