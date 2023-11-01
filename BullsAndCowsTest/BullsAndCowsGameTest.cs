@@ -30,11 +30,15 @@ namespace BullsAndCowsTest
             Assert.Equal("4A0B", result);
         }
 
-        [Fact]
-        public void Should_return_2A0B_when_Guess_given_guess_number_position_partial_right_and_value_partial_right()
+        [Theory]
+        [InlineData("1289")]
+        [InlineData("1630")]
+        [InlineData("0264")]
+        [InlineData("0834")]
+        [InlineData("1984")]
+        public void Should_return_2A0B_when_Guess_given_guess_number_position_and_value_partial_right(string guessNumber)
         {
             //given
-            string guessNumber = "1289";
             string secret = "1234";
             Mock<SecretGenerator> mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
@@ -100,6 +104,26 @@ namespace BullsAndCowsTest
             string result = game.Guess(guessNumber);
             //then
             Assert.Equal("0A0B", result);
+        }
+
+
+        [Theory]
+        [InlineData("1243")]
+        [InlineData("2134")]
+        [InlineData("1324")]
+        [InlineData("1432")]
+        [InlineData("4231")]
+        public void Should_return_2A2B_when_Guess_given_guess_number_position_partial_right_value_partial_right(string guessNumber)
+        {
+            //given
+            string secret = "1234";
+            Mock<SecretGenerator> mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            //when
+            string result = game.Guess(guessNumber);
+            //then
+            Assert.Equal("2A2B", result);
         }
     }
 }
