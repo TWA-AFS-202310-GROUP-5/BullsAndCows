@@ -36,6 +36,14 @@ namespace BullsAndCowsTest
 
         [Theory]
         [InlineData("2143")]
+        [InlineData("2341")]
+        [InlineData("2413")]
+        [InlineData("3142")]
+        [InlineData("3412")]
+        [InlineData("3421")]
+        [InlineData("4123")]
+        [InlineData("4312")]
+        [InlineData("4321")]
         public void Should_return_0A4B_when_Guess_given_all_guessNumber_are_correct_and_worng_position(string guessNumber)
         {
             //When
