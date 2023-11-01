@@ -18,10 +18,6 @@ namespace BullsAndCows
         {
             int bulls = 0;
             int totalSameNumber = 0;
-            if (secret.Equals(guess))
-            {
-                return "4A0B";
-            }
 
             for (int i = 0; i < guess.Length; i++)
             {
