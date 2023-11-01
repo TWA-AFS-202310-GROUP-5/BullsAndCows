@@ -17,6 +17,7 @@ namespace BullsAndCows
         public string Guess(string guess)
         {
             int bulls = 0;
+            int totalSameNumber = 0;
             if (secret.Equals(guess))
             {
                 return "4A0B";
@@ -26,10 +27,14 @@ namespace BullsAndCows
             {
                 if (secret.IndexOf(guess[i]) != -1)
                 {
-                    bulls++;
+                    totalSameNumber++;
+                    if (i == secret.IndexOf(guess[i]))
+                    {
+                        bulls++;
+                    }
                 }
             }
-            return $"{bulls}A0B";
+            return $"{bulls}A{totalSameNumber-bulls}B";
         }
     }
 }

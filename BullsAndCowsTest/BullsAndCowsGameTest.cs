@@ -45,6 +45,7 @@ namespace BullsAndCowsTest
             Assert.Equal("2A0B", result);
         }
 
+        [Fact]
         public void Should_return_1A1B_when_guess_given_guess_number_and_secret_have_same_number_in_same_positions_and_different_position()
         {
             var guessNumber = "1234";
