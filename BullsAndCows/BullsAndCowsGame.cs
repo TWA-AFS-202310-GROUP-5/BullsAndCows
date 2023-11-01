@@ -36,6 +36,11 @@ namespace BullsAndCows
 
         public string Guess(string guess)
         {
+            if (!IsGuessValid(guess))
+            {
+                return "Wrong Input, input again";
+            }
+
             char[] guessArr = guess.ToCharArray();
 
             (int numOfA, int numOfB) = CountMatchedAndCorrectDigits(guessArr);
