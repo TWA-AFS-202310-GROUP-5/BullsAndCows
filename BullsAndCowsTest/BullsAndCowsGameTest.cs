@@ -224,7 +224,7 @@ namespace BullsAndCowsTest
             Assert.Equal(expectedResult, result);
         }
 
-        //-------------------------------------------Test canContinue Method------------------------------------------
+        //-------------------------------------------Test CanContinue Method------------------------------------------
         [Fact]
         public void Should_be_true_when_CanContinue_given_first_try()
         {
@@ -300,6 +300,44 @@ namespace BullsAndCowsTest
 
             //Given
             var result = game.CanContinue;
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+        //-------------------------------------------Test CanContinue Method------------------------------------------
+        [Fact]
+        public void Should_be_false_when_IsWinner_given_not_guess_correctly()
+        {
+            //When
+            bool expectedResult = false;
+            string guessNumber = "2345";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            game.Guess(guessNumber);
+
+            //Given
+            var result = game.IsWinner;
+
+            //Then
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void Should_be_true_when_IsWinner_given_guess_correctly()
+        {
+            //When
+            bool expectedResult = true;
+            string guessNumber = "1234";
+            string secret = "1234";
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+            game.Guess(guessNumber);
+
+            //Given
+            var result = game.IsWinner;
 
             //Then
             Assert.Equal(expectedResult, result);

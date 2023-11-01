@@ -20,6 +20,7 @@ namespace BullsAndCows
         }
 
         public bool CanContinue { get; set; }
+        public bool IsWinner { get; set; }
 
         public bool IsGuessValid(string guess)
         {

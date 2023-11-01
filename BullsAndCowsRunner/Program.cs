@@ -12,6 +12,7 @@ namespace BullsAndCowsRunner
             Console.WriteLine("Game Start: type your guess for this secret 4 digit number");
             while (game.CanContinue)
             {
+                Console.Write("Your guess: ");
                 var input = Console.ReadLine();
                 var output = game.Guess(input);
                 Console.WriteLine(output);
