@@ -38,7 +38,7 @@ namespace BullsAndCowsTest
         [InlineData("5634")]
         [InlineData("5236")]
         [InlineData("1564")]
-        public void Should_return_2A0B_when_Game_given_position_and_value_partical_right(string guessNumber)
+        public void Should_return_2A0B_when_Game_given_position_and_value_partial_right(string guessNumber)
         {
             //given
             string secret = "1234";
@@ -57,7 +57,7 @@ namespace BullsAndCowsTest
         [Theory]
         [InlineData("2178")]
         [InlineData("9843")]
-        public void Should_return_0A2B_when_Game_given_value_partical_right(string guessNumber)
+        public void Should_return_0A2B_when_Game_given_value_partial_right(string guessNumber)
         {
             //given
             string secret = "1234";
@@ -75,7 +75,7 @@ namespace BullsAndCowsTest
 
         [Theory]
         [InlineData("1456")]
-        public void Should_return_1A1B_when_Game_given_position_and_value_partical_right(string guessNumber)
+        public void Should_return_1A1B_when_Game_given_position_and_value_partial_right(string guessNumber)
         {
             //given
             string secret = "1234";
@@ -93,7 +93,7 @@ namespace BullsAndCowsTest
 
         [Theory]
         [InlineData("1243")]
-        public void Should_return_2A2B_when_Game_given_position_and_value_partical_right(string guessNumber)
+        public void Should_return_2A2B_when_Game_given_position_and_value_partial_right(string guessNumber)
         {
             //given
             string secret = "1234";
