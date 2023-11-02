@@ -224,7 +224,7 @@ namespace BullsAndCowsTest
             Assert.Equal(expectedResult, result);
         }
 
-        //-------------------------------------------Test CanContinue Method------------------------------------------
+        //-------------------------------------------Test CanContinue-------------------------------------------------
         [Fact]
         public void Should_be_true_when_CanContinue_given_first_try()
         {
@@ -304,7 +304,8 @@ namespace BullsAndCowsTest
             //Then
             Assert.Equal(expectedResult, result);
         }
-        //-------------------------------------------Test CanContinue Method------------------------------------------
+
+        //-------------------------------------------Test IsWinner-------------------------------------------------
         [Fact]
         public void Should_be_false_when_IsWinner_given_not_guess_correctly()
         {
