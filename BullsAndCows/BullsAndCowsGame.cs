@@ -24,18 +24,10 @@ namespace BullsAndCows
 
         public bool IsGuessValid(string guess)
         {
-            List<char> existChar = new List<char>();
-            foreach (char c in guess)
-            {
-                if (c < '0' || c > '9' || existChar.Contains(c))
-                {
-                    return false;
-                }
-
-                existChar.Add(c);
-            }
-
-            return true;
+            var guessChars = guess.ToCharArray();
+            var isNumber = guessChars.All(c => !(c < '0' || c > '9'));
+            var isUnique = guessChars.Distinct().Count() == 4;
+            return isNumber && isUnique;
         }
 
         public string Guess(string guess)
@@ -78,11 +70,11 @@ namespace BullsAndCows
         private (int, int) CountMatchedAndCorrectDigits(char[] guessArr)
         {
             char[] secretArr = secret.ToCharArray();
-            int fullMathedDigitNum = CountFullMatchGuessDigits(guessArr, secretArr);
+            int fullMatchedDigitNum = CountFullMatchGuessDigits(guessArr, secretArr);
 
-            int correctNotMatchedDigitNum = CountCorrectGuessDigits(guessArr, secretArr) - fullMathedDigitNum;
+            int correctNotMatchedDigitNum = CountCorrectGuessDigits(guessArr, secretArr) - fullMatchedDigitNum;
 
-            return (fullMathedDigitNum, correctNotMatchedDigitNum);
+            return (fullMatchedDigitNum, correctNotMatchedDigitNum);
         }
 
         private int CountFullMatchGuessDigits(char[] guessArr, char[] secretArr)

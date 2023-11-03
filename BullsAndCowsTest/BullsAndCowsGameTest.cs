@@ -20,7 +20,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_4A0B_when_Guess_given_all_guessNumber_are_correct_and_right_position()
         {
-            //When
+            //Given
             string expectedResult = "4A0B";
             string guessNumber = "1234";
             string secret = "1234";
@@ -28,7 +28,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -47,14 +47,14 @@ namespace BullsAndCowsTest
         [InlineData("4321")]
         public void Should_return_0A4B_when_Guess_given_all_guessNumber_are_correct_and_worng_position(string guessNumber)
         {
-            //When
+            //Given
             string expectedResult = "0A4B";
             string secret = "1234";
             var mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -64,7 +64,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_0A0B_when_Guess_given_all_guessNumber_are_worng()
         {
-            //When
+            //Given
             string expectedResult = "0A0B";
             string guessNumber = "6789";
             string secret = "1234";
@@ -72,7 +72,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -82,7 +82,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_xA0B_when_Guess_given_x_in_range_0_4_where_x_guessNumber_are_correct_and_right_position_and_others_are_all_wrong()
         {
-            //When
+            //Given
             string expectedResult = "2A0B";
             string guessNumber = "1289";
             string secret = "1234";
@@ -90,7 +90,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -100,7 +100,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_0AyB_when_Guess_given_y_in_range_0_4_where_y_guessNumber_are_correct_and_wrong_position_and_others_are_all_wrong()
         {
-            //When
+            //Given
             string expectedResult = "0A2B";
             string guessNumber = "3489";
             string secret = "1234";
@@ -108,7 +108,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -118,7 +118,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_xAyB_when_Guess_given_x_y_both_in_range_0_4_where_x_guessNumber_are_correct_and_right_position_and_y_guessNumber_are_correct_and_wrong_position()
         {
-            //When
+            //Given
             string expectedResult = "1A1B";
             string guessNumber = "1489";
             string secret = "1234";
@@ -126,7 +126,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -136,7 +136,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_2A2B_when_Guess_given_2_guessNumber_are_correct_and_right_position_and_2_guessNumber_are_correct_and_wrong_position()
         {
-            //When
+            //Given
             string expectedResult = "2A2B";
             string guessNumber = "1243";
             string secret = "1234";
@@ -144,7 +144,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -154,7 +154,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_wrong_input_when_Guess_given_invalid_input()
         {
-            //When
+            //Given
             string expectedResult = "Wrong Input, input again";
             string guessNumber = "abcd";
             string secret = "1234";
@@ -162,7 +162,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.Guess(guessNumber);
 
             //Then
@@ -173,7 +173,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_true_when_isGuessValid_given_valid_numerical_nonRepeated_input()
         {
-            //When
+            //Given
             bool expectedResult = true;
             string guessNumber = "1234";
             string secret = "1234";
@@ -181,7 +181,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.IsGuessValid(guessNumber);
 
             //Then
@@ -191,7 +191,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_false_when_isGuessValid_given_nonNumerical_nonRepeated_input()
         {
-            //When
+            //Given
             bool expectedResult = false;
             string guessNumber = "abcd";
             string secret = "1234";
@@ -199,7 +199,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.IsGuessValid(guessNumber);
 
             //Then
@@ -209,7 +209,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_return_false_when_isGuessValid_given_numerical_repeated_input()
         {
-            //When
+            //Given
             bool expectedResult = false;
             string guessNumber = "1123";
             string secret = "1234";
@@ -217,7 +217,7 @@ namespace BullsAndCowsTest
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.IsGuessValid(guessNumber);
 
             //Then
@@ -228,14 +228,14 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_be_true_when_CanContinue_given_first_try()
         {
-            //When
+            //Given
             bool expectedResult = true;
             string secret = "1234";
             var mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
 
-            //Given
+            //When
             var result = game.CanContinue;
 
             //Then
@@ -245,7 +245,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_be_true_when_CanContinue_given_after_fifth_try()
         {
-            //When
+            //Given
             bool expectedResult = true;
             string[] guessNumbers = { "2345", "3456", "4567", "5678", "6789" };
             string secret = "1234";
@@ -257,7 +257,7 @@ namespace BullsAndCowsTest
                 game.Guess(guess);
             }
 
-            //Given
+            //When
             var result = game.CanContinue;
 
             //Then
@@ -267,7 +267,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_be_false_when_CanContinue_given_after_sixth_try()
         {
-            //When
+            //Given
             bool expectedResult = false;
             string[] guessNumbers = { "2345", "3456", "4567", "5678", "6789", "7890" };
             string secret = "1234";
@@ -279,7 +279,7 @@ namespace BullsAndCowsTest
                 game.Guess(guess);
             }
 
-            //Given
+            //When
             var result = game.CanContinue;
 
             //Then
@@ -289,7 +289,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_be_false_when_CanContinue_given_guess_successfully()
         {
-            //When
+            //Given
             bool expectedResult = false;
             string guessNumber = "1234";
             string secret = "1234";
@@ -298,7 +298,7 @@ namespace BullsAndCowsTest
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
             game.Guess(guessNumber);
 
-            //Given
+            //When
             var result = game.CanContinue;
 
             //Then
@@ -309,7 +309,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_be_false_when_IsWinner_given_not_guess_correctly()
         {
-            //When
+            //Given
             bool expectedResult = false;
             string guessNumber = "2345";
             string secret = "1234";
@@ -318,7 +318,7 @@ namespace BullsAndCowsTest
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
             game.Guess(guessNumber);
 
-            //Given
+            //When
             var result = game.IsWinner;
 
             //Then
@@ -328,7 +328,7 @@ namespace BullsAndCowsTest
         [Fact]
         public void Should_be_true_when_IsWinner_given_guess_correctly()
         {
-            //When
+            //Given
             bool expectedResult = true;
             string guessNumber = "1234";
             string secret = "1234";
@@ -337,7 +337,7 @@ namespace BullsAndCowsTest
             var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
             game.Guess(guessNumber);
 
-            //Given
+            //When
             var result = game.IsWinner;
 
             //Then
