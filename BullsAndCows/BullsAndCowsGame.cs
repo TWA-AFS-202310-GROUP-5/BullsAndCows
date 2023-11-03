@@ -22,22 +22,22 @@ namespace BullsAndCows
             }
             else
             {
-                int countSameValueAndPosition = 0;
-                int countSameValueDifferentPosition = 0;
+                int bulls = 0;
+                int cows = 0;
                 for (var i = 0; i < secret.Length; i++)
                 {
                     var index = secret.IndexOf(guess[i]);
                     if (index == i)
                     {
-                        countSameValueAndPosition++;
+                        bulls++;
                     }
                     else if (index >= 0)
                     {
-                        countSameValueDifferentPosition++;
+                        cows++;
                     }
                 }
 
-                return countSameValueAndPosition + "A" + countSameValueDifferentPosition + "B";
+                return $"{bulls}A{cows}B";
             }
         }
     }
