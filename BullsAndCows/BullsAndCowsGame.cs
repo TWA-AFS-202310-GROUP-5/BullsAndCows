@@ -16,14 +16,14 @@ namespace BullsAndCows
 
         public string Guess(string guess)
         {
-            int x = 0;
-            int y = 0;
+            int bulls = 0;
+            int cows = 0;
 
             for (int i = 0; i < guess.Length; i++)
             {
                 if (guess[i] == secret[i])
                 {
-                    x++;
+                    bulls++;
                 }
             }
 
@@ -33,15 +33,15 @@ namespace BullsAndCows
                 {
                     if (guess[k] == secret[j])
                     {
-                        y++;
+                        cows++;
                         break;
                     }
                 }
             }
 
-            y -= x;
+            cows -= bulls;
 
-            return $"{x}A{y}B";
+            return $"{bulls}A{cows}B";
         }
     }
 }
